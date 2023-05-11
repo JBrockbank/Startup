@@ -48,10 +48,9 @@ TECHNOLOGIES
 **DELIVERABLES**
 \
 \
-HTML
+**HTML**
 \
 For this deliverable I added the application structure
-\
 - HTML Pages - I added 4 HTML pages. index(Login screen), Home, Profile, and Ratings
 - Links - All the pages have links to eachother but the login one goes straight to the homepage after logging in
 - Text - There is text on the page that explains certain things to the user
