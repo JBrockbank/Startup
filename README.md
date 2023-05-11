@@ -43,6 +43,21 @@ TECHNOLOGIES
 - Login - Register and login users. Credentials securely stored in database. Can't see movies or rate movies unless authenticated.
 - WebSocket - When users submit movie ratings, their raitings are viewable to all other users following them.
 - React - Application ported to use the React web framework.
-
-
+\
+\
+**DELIVERABLES**
+\
+\
+HTML
+\
+For this deliverable I added the application structure
+\
+- HTML Pages - I added 4 HTML pages. index(Login screen), Home, Profile, and Ratings
+- Links - All the pages have links to eachother but the login one goes straight to the homepage after logging in
+- Text - There is text on the page that explains certain things to the user
+- Images - I added an image that always displays with the name of the app and also added a placeholder image for the movie of the day
+- Login - There is a login box and button on the index.html(login) page
+- Database - The movie ratings represent data pulled from the database
+- WebSocket - The Edit/Add Rating button represents sending data to be stored in the database by the user which can be seen by other users 
+- React - Application ported to use the React web framework.
 
