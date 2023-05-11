@@ -1,6 +1,12 @@
 Notes Here for CS 260\
 \
 \
+\
+**STARTUP NOTES**
+\
+To deploy it to the server:
+\
+./deployFiles.sh -k "C:\Users\brock\OneDrive\Documents\BYU Documents\CS 260\jordan v1 key.txt" -h jbrock.click -s startup
 **HTML**\
 \
 ELEMENTS\
