@@ -21,9 +21,9 @@
                 <li><a href="home.html">Home</a></li>
                 <li><a href="ratings.html">Ratings</a></li>
                 <li><a href="profile.html">Profile</a></li>
-                <li><a href="about.html">About</a></li>
               </menu>
         </nav>
+        <h4>*Username here</h4>
 
       <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
       <hr />
@@ -32,6 +32,32 @@
     <main>
       <h1>Movie Ratings</h1>
       <body>
+        <p>
+        <h3>Add or View Ratings</h3>
+        <input search="search" placeholder="Search for a movie" />
+        </p>
+        <p>
+            <table>
+                <tr>
+                    <th>Movie Title</th>
+                    <th>Year</th>
+                    <th>Director</th>
+                    <th>Genre</th>
+                    <th>Rating</th>
+                </tr>
+                <tr>
+                    <td>LOTR</td>
+                    <td>2001</td>
+                    <td>Peter Jackson</td>
+                    <td>Fantasy</td>
+                    <td>5</td>
+            </table>
+        </p>
+        Edit/Add Rating:
+        <input type="number" id="rating" name="rating" min="1" max="10">
+        <p>
+            <h3>List of Movie Ratings</h3>
+        </p>
         <form action="post">
             <label for="name">Movie Ratings</label>
             <select name="Movie Reviews" id="Movie Ratings">
