@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Tell browsers not to scale the viewport automatically -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <!-- Use header, main, and footer elements to give semantic structure -->
+    <header>
+      <h1>Friendly Review<sup>&reg;</sup></h1>
+      <img src= "https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" width = 150/>
+
+      <!-- Navigation elements -->
+      <nav>
+        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
+            <menu>
+                <li><a href="index.html">Login</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="ratings.html">Ratings</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="about.html">About</a></li>
+              </menu>
+        </nav>
+
+      <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
+      <hr />
+    </header>
+
+    <main>
+        <h1>My Profile</h1>
+        <h2>My Info</h2>
+        <body>
+            <p>Username: *displays username</p>
+            <p>Password: **********</p>
+            <p>Movies Rated: *number of movies rated by the user</p>
+        </body>
+        <h2>My Friends</h2>
+        <body>
+            <input search="search" placeholder="Search to add a friend" />
+            <p>*Database table of friends</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">My Friends</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Username</th>
+                        <th>Movies Rated</th>
+                    </tr>
+                    <tr>
+                        <td>JBrock</td>
+                        <td>17</td>
+                    </tr>
+                </tbody>
+            </table>
+        </body>
+
+    </main>
+
+    <footer>
+      <hr />
+      <span class="text-reset">Jordan Brockbank</span>
+      <br />
+      <a href="https://github.com/jbrockbank/startup">GitHub</a>
+    </footer>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
