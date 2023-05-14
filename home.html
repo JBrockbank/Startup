@@ -6,47 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="icon" href="favicon.ico" />
+    <link rel="stylesheet" href="home.css" />
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+    crossorigin="anonymous"
+  />
+
   </head>
   <body>
     <!-- Use header, main, and footer elements to give semantic structure -->
     <header>
-      <h1>Friendly Review<sup>&reg;</sup></h1>
-      <img src= "https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" width = 150/>
-
+      <h1 id="webtitle">
+        <p>Friendly</p>
+        <p>Review</p>
+        </h1>
+      <img id="webimage" src= "https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" width = 150/>
+    </header>
       <!-- Navigation elements -->
-      <nav>
-        <!-- Menu is a semantic alternative to <ul> that represents an interaction -->
-            <menu>
-                <li><a href="index.html">Login</a></li>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="ratings.html">Ratings</a></li>
-                <li><a href="profile.html">Profile</a></li>
-              </menu>
-        </nav>
-        <h4>*Username here</h4>
+      <div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Friendly Review</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="home.html">Home <span class="sr-only"></span></a>
+            <a class="nav-item nav-link" href="ratings.html">Movie Ratings</a>
+            <a class="nav-item nav-link" href="profile.html">My Profile</a>
+            <a class="nav-item nav-link" href="index.html">Sign Out</a>
+            <a class="nav-item nav-link" href="profile.html">*Username Here</a>
+            </div>
+          </div>
+        </div>
+      </nav>
 
       <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
-      <hr />
-    </header>
 
     <main>
       <h1>Featured Movie</h1>
-        <body>
-        <p>*Daily image(movie poster) from Database</p>
+        <div class="featured">
         <img src= "https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" width = 150/>
+        <div class="movieinfo">
         <p>Daily movie title from Database</p>
         <p>Daily movie year released</p>
         <p>Daily movie description from Database</p>
         <p>Daily movie rating from Database</p>
-        </body>
     </main>
 
     <footer>
-      <hr />
       <span class="text-reset">Jordan Brockbank</span>
       <br />
-      <a href="https://github.com/jbrockbank/startup">GitHub</a>
+      <a id="github" href="https://github.com/jbrockbank/startup">GitHub</a>
     </footer>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"
+  ></script>
   </body>
 </html>
 
