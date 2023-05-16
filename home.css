@@ -1,20 +1,25 @@
 header {
   display: flex;
-  justify-content:space-between;
+  justify-content:center;
   align-items: center; 
-    background-color: rgb(245, 218, 182);
+  background-color: rgb(241, 57, 66);
+  flex: 0 0 2rem;
+
 }
 
 #webtitle {
     font-size: 3rem;
     font-weight: bold;
     margin-left: 1rem;
+    color: rgb(255, 255, 255);
+    margin-right: 1em;
 }
 
 #webimage {
-    width: 12rem;
-    height: 10rem;
+    width: 8rem;
+    height: 8rem;
     margin-right: 1rem;
+    border: solid thin black;
 }
 
 menu {
@@ -28,19 +33,52 @@ main {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: rgb(250, 235, 215);
+    background-color: rgb(255, 255, 255);
+    flex: 1;
 }
 
 .featured {
     display: flex;
     flex-direction: row;
+    justify-content:center;
 }
 
 footer {
-    background-color: rgb(245, 218, 182);
+    background-color: rgb(250, 255, 175);
     border-top: solid thin black;
-    margin:0;
-    padding:0;
+    padding-left:1em;
+    padding-right:1em;
+    margin-top: 1em;
     display: flex;
     justify-content: space-between;
+    flex: 0 0 1rem;
 }
+
+#img1 {
+    flex: 1;
+    padding: 1.5rem;
+    width: 20rem;
+    border: solid thin black;
+}
+
+.movieinfo {
+    flex: .5;
+    font-size: 1rm;
+    border: solid thin black;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.info {
+    margin-left: 1em;
+}
+
+
