@@ -59,4 +59,14 @@ For this deliverable I added the application structure
 - Database - The movie ratings represent data pulled from the database
 - WebSocket - The Edit/Add Rating button represents sending data to be stored in the database by the user which can be seen by other users 
 - React - Application ported to use the React web framework.
-
+\
+\
+**CSS**
+\
+For this deliverable I added the application structure
+- Header, Footer, and main content body are styled with css
+- Navigation Elements - I used Bootstrap to style the buttons on the pages and also used it for a NavBar on top to navigate around the web app
+- Responsive to Window Sizing - My app looks great when the size of the window changes 
+- Application Elements - There's good spacing between elements and the colors are consistent across the pages
+- Application text content - Consistent fonts and sizes
+- Application Images - There are a few images across the pages although some are just placeholders that will change with the addition of the database
