@@ -14,7 +14,6 @@ header {
     border-bottom: solid thin black;
     color:rgb(255, 255, 255);
     flex: 0 4rem;
-
 }
 
 body {
@@ -39,7 +38,11 @@ footer {
     flex: 0 1rem;
 }
 
-
+#logbut {
+    display: flex;
+    flex-direction: row;
+    flex: 0 1rem;
+}
 
 
 

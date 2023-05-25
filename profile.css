@@ -65,11 +65,13 @@ body {
     margin: 1em;
     text-align: center;
     justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 table {
     border: solid thin black;
-    padding-top: 2rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
 }
@@ -97,8 +99,6 @@ tbody {
 .friendsearch {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center;;
     align-items: center;
-    display: none;
-    
 }
