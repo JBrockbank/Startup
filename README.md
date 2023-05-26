@@ -70,3 +70,13 @@ For this deliverable I added the application structure
 - Application Elements - There's good spacing between elements and the colors are consistent across the pages
 - Application text content - Consistent fonts and sizes
 - Application Images - There are a few images across the pages although some are just placeholders that will change with the addition of the database
+\
+\
+\
+**JAVASCRIPT**
+\
+For this deliverable I added the following:
+- Login - I added a login system where it creates a user with a password that can have data added to it and it displays the Username
+- Database - Using Local storage in place of a Database I have the javascript coded for things such as adding other users as friends and seeing them in lists
+- WebSocket - I have the tools in place to simulate other users adding ratings to their movies and it displaying minus the database
+- Application Support - I have buttons that perform different functions such as searching and adding friends and javascript that makes the page interactive.
