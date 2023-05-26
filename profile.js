@@ -11,6 +11,7 @@ function addFriend() {
   newFriend = new User(FriendName, "password");
   user.friends.push(newFriend);
   window.localStorage.setItem("user", JSON.stringify(user));
+  location.reload();
 }
 
 function hideButton() {
