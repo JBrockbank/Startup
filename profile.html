@@ -22,7 +22,6 @@
       <img id="webimage" src= "https://images.pexels.com/photos/33129/popcorn-movie-party-entertainment.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"/>
     </header>
       <!-- Navigation elements -->
-      <div>
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#" style="margin-left: 1em" >Friendly Review</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,12 +32,11 @@
             <a class="nav-item nav-link" href="home.html">Home <span class="sr-only"></span></a>
             <a class="nav-item nav-link" href="ratings.html">Movie Ratings</a>
             <a class="nav-item nav-link" href="profile.html">My Profile</a>
-            <a style="position: right" class="nav-item nav-link" href="index.html">Sign Out</a>
+            <a class="nav-item nav-link" href="index.html">Sign Out</a>
             <a id="nameBar" class="nav-item nav-link" href="profile.html">*Username Here</a>
           </div>
         </div>
       </nav>
-      </div>
 
       <!-- Since we don't have the ability to style we use old style HTML to give some visual formatting -->
     <main>
@@ -48,9 +46,12 @@
         <h2 style="text-align: center;">My Info</h2>
             <div style="text-align: center; display:flex; flex-direction: row;">
             <p style="margin-right: 1rem;">Username:  </p>
-            <p label="Username: " id="name">Username</p>
+            <p label="Username" id="name">Username</p>
             </div>
-            <p>Movies Rated: *number of movies rated by the user</p>
+            <div style="text-align: center; display:flex; flex-direction: row;">
+            <p style="margin-right: 1rem;">Movies Rated: </p>
+            <p label="Movies Rated" id="mRated"></p>
+            </div>
         </div>
         <div class="Friends">
           <div>
@@ -92,18 +93,18 @@
       <a id="github" href="https://github.com/jbrockbank/startup">GitHub</a>
     </footer>
     <script>
-            document.addEventListener('DOMContentLoaded', function() {
-              var storedUsername = localStorage.getItem('userName');
-              if (storedUsername) {
-              document.getElementById('name').textContent = storedUsername;
-              document.getElementById('nameBar').textContent = storedUsername;
-              } else {
-                document.getElementById('name').textContent = "Username";
-                document.getElementById('nameBar').textContent = "Username";
-              }
-            });
-
-            
+        document.addEventListener('DOMContentLoaded', function() {
+    var storedUsername = localStorage.getItem('userName');
+    var user = JSON.parse(window.localStorage.getItem("user"));
+    document.getElementById('mRated').textContent = user.moviesRated;
+    if (storedUsername) {
+    document.getElementById('name').textContent = storedUsername;
+    document.getElementById('nameBar').textContent = storedUsername;
+    } else {
+      document.getElementById('name').textContent = "Username";
+      document.getElementsByClass('nameBar').textContent = "Username";
+    }
+  });
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

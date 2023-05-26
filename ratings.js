@@ -1,5 +1,9 @@
 function myFunction() {
     document.getElementById("stable").style.display = "block";
+    searchEl = document.getElementById("search");
+    var searchName = searchEl.value;
+    document.getElementById("smovie").textContent = searchName;
+    console.log(searchName);
   }
   
   function dropFunction(id) {
@@ -14,3 +18,4 @@ function myFunction() {
     }
     document.getElementById("ratings").style.display = "block";
   }
+
