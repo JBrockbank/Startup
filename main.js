@@ -2,9 +2,8 @@ class User {
     constructor(name, password) {
       this.name = name;
       this.password = password;
-      const x = fetch("http://localhost:8080/users/getAll")
-      this.id = x.length + 1;
       this.friends = [];
+      this.moviesRated = 0;
     }
   }
   
@@ -36,19 +35,5 @@ class User {
 
   function createUser(nameEl, passwordEl) {
     const user = new User(nameEl.value, passwordEl.value);
-    fetch("http://localhost:8080/users/create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        localStorage.setItem("userId", data.id);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    window.localStorage.setItem("user", JSON.stringify(user))
   }
