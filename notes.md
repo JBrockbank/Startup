@@ -31,3 +31,9 @@ CHARACTERS\
 & - &amp\
 < - &lt\
 ...
+\
+\
+Margin - Border - Padding - Content \
+JS Object - {n:1}\
+JSON - {"n":1}\
+To point to another DNS Record you should use CNAME \
