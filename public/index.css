@@ -1,0 +1,48 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    flex: 1 0 auto;
+}
+
+header {
+    display: flex;
+    background-color: rgb(241, 57, 66);
+    border-bottom: solid thin black;
+    color:rgb(255, 255, 255);
+    flex: 0 4rem;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    background-color: rgb(250, 255, 175);
+    border-top: solid thin black;
+    margin:0;
+    padding-left:1em;
+    padding-right:1em;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 1rem;
+}
+
+#logbut {
+    display: flex;
+    flex-direction: row;
+    flex: 0 1rem;
+}
+
+
+

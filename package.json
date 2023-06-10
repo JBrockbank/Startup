@@ -1,0 +1,16 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "\\\r \\\r \\\r **STARTUP SPECIFICATION**\r \\\r \\\r ELEVATOR PITCH\r \\\r Have you ever gotten excited to have a movie night with the family or friends and then sat down and asked, \"well.. What do you wanna watch?\" and then get the response of \"Well, whatever you want to watch.\"? Of course you have. All lot of times it can be hard to find good movies that you haven't seen before, especially when sketchy online forums and sites all have different ideas of which movies are the best. Well you no longer have to waste half an hour before binge watching a show you've seen 17 times. Inroducing Friendly Review, the website where you can follow trusted friends with similiar taste and see their ratings for a huge collection of movies. Now it's easy to find something new to watch from a trusted source without all of the hassle. \\\r \\\r KEY FEATURES",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "^5.6.0"
+  }
+}
