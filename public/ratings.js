@@ -67,10 +67,11 @@ function myFunction() {
     user.MovieList.push(movie);
     window.localStorage.setItem("user", JSON.stringify(user));
     submitRating(movie);
+
   }
 
   async function newestRating() {
-    let newrating = false;
+    let newrating = {};
     try {
       const response = await fetch("/api/newrating", {
         method: "GET",
@@ -80,23 +81,47 @@ function myFunction() {
       } catch {
         console.log("error");
       }
+      console.log("newrating:", newrating);
       return newrating;
     }
 
     async function submitRating(newrating) {
       try {
+        const ratingData = {
+          movieId: newrating.movieId,
+          rating: newrating.rating,
+          UserName: newrating.UserName
+        };
+        console.log("ratingData:", ratingData);
+        
         const response = await fetch("/api/newrating", {
           method: "POST",
           headers: { 'Content-Type': "application/json" },
-          body: JSON.stringify(newrating),
+          body: JSON.stringify(ratingData),
         });
+    
+        if (!response.ok) {
+          throw new Error("Failed to submit rating");
+        }
+    
         const updatedRating = await response.json();
         console.log("New rating:", updatedRating);
-        return updatedRating; // Return the updated rating
+        updateNewestRating();
+        return updatedRating;
       } catch (error) {
         console.log("Error:", error);
       }
     }
+
+    async function updateNewestRating() {
+      const newrating = await newestRating();
+      console.log("newrating:", newrating);
+      if (newrating) {
+        document.getElementById("newestRating").textContent = `User ${newrating.UserName} gave ${newrating.movieId} a rating of ${newrating.rating}`;
+      }
+    };
+    
+    
 
 
   
