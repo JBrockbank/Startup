@@ -23,9 +23,10 @@ class User {
   }
   
   class UserMovie {
-    constructor(movieId, rating) {
+    constructor(movieId, rating, Name) {
       this.movieId = movieId;
       this.rating = rating;
+      this.UserName = Name;
     }
   }
   
@@ -44,16 +45,6 @@ class User {
     window.localStorage.setItem("user", JSON.stringify(user))
   }
 
-function rateMovie() {
-  const movieEl = document.querySelector("#smovie");
-  const ratingEl = document.querySelector("#rating");
-  const user = JSON.parse(window.localStorage.getItem("user"));
-  const movie = new UserMovie(movieEl.textContent, ratingEl.value);
-  user.moviesRated++;
-  user.MovieList.push(movie);
-  window.localStorage.setItem("user", JSON.stringify(user));
-  
-}
 
 var user = JSON.parse(window.localStorage.getItem("user"));
 

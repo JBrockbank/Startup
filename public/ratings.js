@@ -58,7 +58,47 @@ function myFunction() {
     });
   }
 
-  
+  function rateMovie() {
+    const movieEl = document.querySelector("#smovie");
+    const ratingEl = document.querySelector("#rating");
+    const user = JSON.parse(window.localStorage.getItem("user"));
+    const movie = new UserMovie(movieEl.textContent, ratingEl.value, user.name);
+    user.moviesRated++;
+    user.MovieList.push(movie);
+    window.localStorage.setItem("user", JSON.stringify(user));
+    submitRating(movie);
+  }
+
+  async function newestRating() {
+    let newrating = false;
+    try {
+      const response = await fetch("/api/newrating", {
+        method: "GET",
+        headers: {'content-type': "application/json"},
+        });
+      newrating = await response.json();
+      } catch {
+        console.log("error");
+      }
+      return newrating;
+    }
+
+    async function submitRating(newrating) {
+      try {
+        const response = await fetch("/api/newrating", {
+          method: "POST",
+          headers: { 'Content-Type': "application/json" },
+          body: JSON.stringify(newrating),
+        });
+        const updatedRating = await response.json();
+        console.log("New rating:", updatedRating);
+        return updatedRating; // Return the updated rating
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    }
+
+
   
   // Call the CreateMovieTable function to populate the table initially
 

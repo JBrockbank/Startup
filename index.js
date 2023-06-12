@@ -15,26 +15,21 @@ const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 //Get New Rating
-apiRouter.get('/ratings', (_req, res) => {
-    res.send(ratings);
+apiRouter.get('newrating', (_req, res) => {
+    res.send(newrating);
 });
 
-//Submit New Rating
-apiRouter.post('/rating', (req, res) => {
-    ratings = updateRatings(req.body, ratings);
-    res.send(ratings);
+apiRouter.post('newrating', (req, res) => {
+    newrating = updateNewRating(req.body, newrating);
+    res.send(newrating);
 });
 
-updateRatings = (newRating, ratings) => {
-    const index = ratings.findIndex((rating) => rating.movieId === newRating.movieId);
-    if (index === -1) {
-        ratings.push(newRating);
-    } else {
-        ratings[index] = newRating;
-    }
-    return ratings;
-};
-
+updateNewRating = (rating, newrating) => {
+    rating.movieId = newrating.movieId;
+    rating.rating = newrating.rating;
+    rating.UserName = newrating.UserName;
+    return newrating;
+}
 
 
 
