@@ -80,3 +80,11 @@ For this deliverable I added the following:
 - Database - Using Local storage in place of a Database I have the javascript coded for things such as adding other users as friends and seeing them in lists
 - WebSocket - I have the tools in place to simulate other users adding ratings to their movies and it displaying minus the database
 - Application Support - I have buttons that perform different functions such as searching and adding friends and javascript that makes the page interactive.
+\
+\
+**Service**
+\
+For this deliverable I added the following:
+- I created an HTTP Service using Node.js and Express
+- FrontEnd is served up using express middleware
+- I created a GET and POST endpoints that allow users to submit ratings and then that rating gets displayed on the website as the newest rating given to a movie and I call those endpoints.
