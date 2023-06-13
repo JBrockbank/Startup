@@ -122,10 +122,7 @@ function myFunction() {
     };
     
     
-
-
-  
-  // Call the CreateMovieTable function to populate the table initially
+  updateNewestRating();
 
   
 
