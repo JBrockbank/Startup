@@ -12,3 +12,6 @@ function randMovie() {
     document.getElementById("director").textContent = "Director: " + director;
     document.getElementById("rating").textContent = "Rating: " + rating;
 }
+
+
+
