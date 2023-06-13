@@ -7,6 +7,7 @@ Notes Here for CS 260\
 To deploy it to the server:
 \
 ./deployFiles.sh -k "C:\Users\brock\OneDrive\Documents\BYU Documents\CS 260\jordan v1 key.txt" -h jbrock.click -s startup
+./deployService.sh -k "C:\Users\brock\OneDrive\Documents\BYU Documents\CS 260\jordan v1 key.txt" -h jbrock.click -s startup
 **HTML**\
 \
 ELEMENTS\
