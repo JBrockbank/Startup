@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
 
 // The service port. In production, the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -27,11 +28,96 @@ updateNewRating = (rating, newrating) => {
   };
   
 
+
 // Get New Rating
 apiRouter.get('/newrating', (_req, res) => {
     res.json(newrating || {});
 });
 
+apiRouter.post('/movieRating', async (req, res) => {
+    const movieId = req.body.movieId;
+    const rating = req.body.rating;
+    const UserName = req.body.UserName;
+    const result = await DB.rateUserMovie(movieId, rating, UserName);
+    res.json(result);
+});
+
+apiRouter.post('/user/register', async (req, res) => {
+    const name = req.body.name;
+    const password = req.body.password;
+    const result = await DB.AddUser(name, password);
+    res.json(result);
+});
+
+apiRouter.post('/user/login', async (req, res) => {
+    const name = req.body.name;
+    const password = req.body.password;
+    const result = await DB.Login(name, password);
+    res.json(result);
+});
+
+apiRouter.get('/movies', async (_req, res) => {
+    const movies = await DB.getMovies();
+    res.json(movies);
+});
+
+apiRouter.post('/movies/search', async (req, res) => {
+    const title = req.body.title;
+    console.log(title);
+    const result = await DB.movieQueryByTitle(title);
+    res.json(result);
+});
+
+apiRouter.post('/movie/search', async (req, res) => {
+    console.log("API ROUTER MOVIE SEARCH")
+    const title = req.body.title;
+    const result = await DB.findMovieID(title);
+    res.json(result);
+    });
+    
+
+apiRouter.get('/user/movies', async (req, res) => {
+    const name = req.body.name;
+    const result = await DB.getUserMovies(name);
+    res.json(result);
+});
+
+apiRouter.post('user/movies', async (req, res) => {
+    const name = req.body.name;
+    const result = await DB.getUserMovies(name);
+    res.json(result);
+});
+
+apiRouter.post('/user/friends', async (req, res) => {
+    const name = req.body.name;
+    const result = await DB.getFriends(name);
+    res.json(result);
+});
+
+apiRouter.post('/user/friends/movies', async (req, res) => {
+    const name = req.body.name;
+    const result = await DB.getFriendsMovies(name);
+    res.json(result);
+});
+
+
+
+apiRouter.get('/movies/search', async (req, res) => {
+    const title = req.body.title;
+    const result = await DB.findMovieID(title);
+    res.json(result);
+});
+
+
+
+apiRouter.post('/movies/rating', async (req, res) => {
+    console.log("HERE")
+    const movieId = req.body.movieId;
+    const rating = req.body.rating;
+    const userName = req.body.userName;
+    const result = await DB.rateUserMovie(movieId, rating, userName);
+    res.json(result);
+});
 
 apiRouter.post('/newrating', (req, res) => {
     newrating = updateNewRating(req.body, newrating);
