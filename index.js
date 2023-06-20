@@ -82,7 +82,8 @@ apiRouter.get('/user/movies', async (req, res) => {
     res.json(result);
 });
 
-apiRouter.post('user/movies', async (req, res) => {
+apiRouter.post('/user/movie', async (req, res) => {
+    console.log("API ROUTER USER MOVIES")
     const name = req.body.name;
     const result = await DB.getUserMovies(name);
     res.json(result);
@@ -100,7 +101,11 @@ apiRouter.post('/user/friends/movies', async (req, res) => {
     res.json(result);
 });
 
-
+apiRouter.post('/movie', async (req, res) => {
+    const id = req.body.movieId;
+    const result = await DB.movieQueryByID(id);
+    res.json(result);
+});
 
 apiRouter.get('/movies/search', async (req, res) => {
     const title = req.body.title;

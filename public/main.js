@@ -72,6 +72,45 @@ function CreateMovieTable(movies, ELid) {
   console.log(table);
 }
 
+
+function CreateMovieTable2(movies, ELid) {
+  console.log("CreateMovieTable2 called");
+  console.log(movies);
+  const table = document.getElementById(ELid);
+  table.innerHTML = "";
+  
+  const headerRow = table.insertRow();
+  const titleHeader = headerRow.insertCell();
+  const genreHeader = headerRow.insertCell();
+  const yearHeader = headerRow.insertCell();
+  const directorHeader = headerRow.insertCell();
+  const ratingHeader = headerRow.insertCell();
+
+  titleHeader.textContent = "Title";
+  genreHeader.textContent = "Genre";
+  yearHeader.textContent = "Year";
+  directorHeader.textContent = "Director";
+  ratingHeader.textContent = "Rating";
+
+  movies.forEach((movie) => {
+    const row = table.insertRow();
+    const titleCell = row.insertCell();
+    const genreCell = row.insertCell();
+    const yearCell = row.insertCell();
+    const directorCell = row.insertCell();
+    const ratingCell = row.insertCell();
+
+    titleCell.textContent = movie.title;
+    genreCell.textContent = movie.genres;
+    yearCell.textContent = movie.year;
+    directorCell.textContent = movie.director;
+    ratingCell.textContent = movie.rating;
+    });
+  console.log("Table Created");
+  console.log(table);
+}
+
+
 async function getMovieId(title) {
   try {
     const response = await fetch("/api/movie/search", {
@@ -263,9 +302,10 @@ async function getFriendsMovies(user) {
 
 
 async function getUserMovies(user) {
-  
+  console.log("getUserMovies called")
+  console.log(user);
   try {
-    const response = await fetch("/api/user/movies", {
+    const response = await fetch("/api/user/movie", {
       method: "POST",
       body: JSON.stringify({ name: user }),
       headers: {
@@ -274,7 +314,28 @@ async function getUserMovies(user) {
     });
     const movies = await response.json();
     console.log(movies);
-    return movies;
+    let movieIDList = [];
+    for (let i = 0; i < movies.length; i++) {
+      movieIDList.push(movies[i].movieId);
+    }
+    console.log(movieIDList);
+    let movieList = [];
+    for (let i = 0; i < movieIDList.length; i++) {
+      const response = await fetch("/api/movie", {
+        method: "POST",
+        body: JSON.stringify({ movieId: movieIDList[i] }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const movie = await response.json();
+      movieList.push(movie);
+    }
+    console.log(movieList);
+    for (let i = 0; i < movies.length; i++) {
+      movieList[i].rating = movies[i].rating;
+    }
+    return movieList;
   } catch {
     console.log("error");
   }
@@ -284,10 +345,13 @@ async function getUserMovies(user) {
 
 
 async function dropFunction(id) {
-  const who = JSON.parse(localStorage.getItem("userName"));
+  console.log("dropFunction called")
+  const userName = localStorage.getItem("userName");
+  var movies = {};
   if (id == 'mrate') {
     document.getElementById("text").innerHTML = "My Ratings";
     who = userName;
+    console.log("My Ratings")
   }
   else if (id == 'frate') {
     document.getElementById("text").innerHTML = "Friend Ratings";
@@ -300,13 +364,20 @@ async function dropFunction(id) {
   document.getElementById("ratings").style.display = "block";
   if (who == "friends") {
     console.log("friendsTable")
-    const movies = await getFriendsMovies(who);
+    movies = await getFriendsMovies(who);
+    console.log(movies);
   }
   else {
     console.log(who + "Table");
-    const movies = await getUserMovies(who);
+    movies = await getUserMovies(who);
+    console.log(movies);
   }
-  CreateMovieTable(movies, "ratings");
+  if (movies == {}) {
+    console.log("No movies found");
+    return false;
+  }
+  console.log(movies);
+  CreateMovieTable2(movies, "ratings");
 }
 
 

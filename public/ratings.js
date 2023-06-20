@@ -60,35 +60,35 @@
       return newrating;
     }
 
-    // async function submitRating(movieName, rating, userName) {
+    async function submitRating(movieName, rating, userName) {
 
-    //   const movieId = await getMovieId(movieName);
-    //   try {
-    //     const ratingData = {
-    //       movieId: movieId,
-    //       rating: rating,
-    //       UserName: userName
-    //     };
-    //     console.log("ratingData:", ratingData);
+      const movieId = await getMovieId(movieName);
+      try {
+        const ratingData = {
+          movieId: movieId,
+          rating: rating,
+          UserName: userName
+        };
+        console.log("ratingData:", ratingData);
         
-    //     const response = await fetch("/api/newrating", {
-    //       method: "POST",
-    //       headers: { 'Content-Type': "application/json" },
-    //       body: JSON.stringify(ratingData),
-    //     });
+        const response = await fetch("/api/newrating", {
+          method: "POST",
+          headers: { 'Content-Type': "application/json" },
+          body: JSON.stringify(ratingData),
+        });
     
-    //     if (!response.ok) {
-    //       throw new Error("Failed to submit rating");
-    //     }
+        if (!response.ok) {
+          throw new Error("Failed to submit rating");
+        }
     
-    //     const updatedRating = await response.json();
-    //     console.log("New rating:", updatedRating);
-    //     updateNewestRating();
-    //     return updatedRating;
-    //   } catch (error) {
-    //     console.log("Error:", error);
-    //   }
-    // }
+        const updatedRating = await response.json();
+        console.log("New rating:", updatedRating);
+        updateNewestRating();
+        return updatedRating;
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    }
 
     async function updateNewestRating() {
       const newrating = await newestRating();

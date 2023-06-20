@@ -150,8 +150,12 @@ async function getMovies() {
 }
 
 async function getUserMovies(name) {
+    console.log("DB.getUserMovies called")
     const query = {UserName: name};
-    const movies= await UserMovieCollection3.find(query).toArray();
+    const options = {
+        sort: { score: -1 },
+        };
+    const movies= await UserMovieCollection3.find(query, options).toArray();
     return movies;
 }
 
