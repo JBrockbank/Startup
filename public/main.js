@@ -247,6 +247,9 @@ async function getMovies() {
   try {
     const response = await fetch("/api/movies", {
       method: "GET",
+      options: {
+        sort: { rating: -1 },
+      },
       headers: {
         "Content-Type": "application/json",
       },
@@ -367,11 +370,17 @@ async function dropFunction(id) {
     movies = await getFriendsMovies(who);
     console.log(movies);
   }
-  else {
+  else if (who == userName) {
     console.log(who + "Table");
     movies = await getUserMovies(who);
     console.log(movies);
   }
+  else if (who == "all") {
+    console.log("allTable");
+    movies = await getMovies();
+    console.log(movies);
+  }
+
   if (movies == {}) {
     console.log("No movies found");
     return false;

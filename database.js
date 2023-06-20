@@ -144,7 +144,7 @@ async function Login(name, password) {
 
 
 async function getMovies() {
-    const cursor = collection.find({});
+    const cursor = collection.find({}).sort({rating: -1});
     const movies = await cursor.toArray();
     return movies;
 }
