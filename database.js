@@ -124,6 +124,11 @@ async function AddUser(name, password) {
     }
 }
 
+// async function searchFriends(name) {
+//     const query = {name: {$regex: name, $options: 'i'}};
+//     const users = await UserCollection.find(query).toArray();
+//     return users;
+// }
 
 async function Login(name, password) {
     const query = {name: name, password: password};
@@ -159,37 +164,40 @@ async function getUserMovies(name) {
     return movies;
 }
 
-async function getFriends(name) {
-    const query = {UserName: name};
-    const user = await UserCollection.findOne(query);
-    const friends = user.friends;
-    return friends;
-}
+// async function getFriends(name) {
+//     const query = {UserName: name};
+//     const user = await UserCollection.findOne(query);
+//     const friends = user.friends;
+//     return friends;
+// }
 
-async function getFriendsMovies(name) {
-    const friends = await getFriends(name);
-    const movies = [];
-    for (let i = 0; i < friends.length; i++) {
-        const query = {UserName: friends[i]};
-        const userMovies = await UserMovieCollection3.find(query).toArray();
-        for (let j = 0; j < userMovies.length; j++) {
-            movies.push(userMovies[j].id);
-        }
-    }
-    for (let i = 0; i < movies.length; i++) {
-        const query = {id: movies[i]};
-        const movies = await collection.find(query).toArray();
-    }
-    return movies;
-}
+// async function getFriendsMovies(name) {
+//     const friends = await getFriends(name);
+//     const movies = [];
+//     for (let i = 0; i < friends.length; i++) {
+//         const query = {UserName: friends[i]};
+//         const userMovies = await UserMovieCollection3.find(query).toArray();
+//         for (let j = 0; j < userMovies.length; j++) {
+//             movies.push(userMovies[j].id);
+//         }
+//     }
+//     for (let i = 0; i < movies.length; i++) {
+//         const query = {id: movies[i]};
+//         const movies = await collection.find(query).toArray();
+//     }
+//     return movies;
+// }
 
 
 
 async function randMovie() {
+    console.log("randMovie called");
     const length = await collection.countDocuments({})
     const index = Math.floor(Math.random() * length)
     const query = {id: index};
-    let movie = await collection.find(query).toArray();
+    let movie = await collection.findOne(query);
+    console.log("Movie: ");
+    console.log(movie);
     return movie;
 }
 
@@ -208,4 +216,4 @@ async function randMovie() {
 
 
 
-module.exports = { movieQueryByTitle, movieQueryByID, rateUserMovie, AddUser, randMovie, Login, getMovies, getUserMovies, getFriends, getFriendsMovies, findMovieID };
+module.exports = { movieQueryByTitle, movieQueryByID, rateUserMovie, AddUser, randMovie, Login, getMovies, getUserMovies, findMovieID };

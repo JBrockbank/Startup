@@ -1,15 +1,6 @@
-const { RandomMovie } = require('./database.js');
 
 
-export function RandomMovie() {
-    let movie = DB.randMovie();
-    document.getElementById("title").textContent = "Title: " + movie.title;
-    document.getElementById("genre").textContent = "Genre: " + movie.genre;
-    document.getElementById("year").textContent = "Year Released: " + movie.year;
-    document.getElementById("director").textContent = "Director: " + movie.director;
-    // document.getElementById("rating").textContent = "Rating: " + rating;
-    return movie;
-  }
+
 
   RandomMovie();
 

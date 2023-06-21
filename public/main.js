@@ -25,16 +25,40 @@
   
 
 
+  async function RandomMovie() {
+    try {
   
-function RandomMovie() {
-  let movie = randMovie();
-  document.getElementById("title").textContent = "Title: " + movie.title;
-  document.getElementById("genre").textContent = "Genre: " + movie.genre;
-  document.getElementById("year").textContent = "Year Released: " + movie.year;
-  document.getElementById("director").textContent = "Director: " + movie.director;
-  // document.getElementById("rating").textContent = "Rating: " + rating;
-  return movie;
-}
+      const response = await fetch('/api/movies/random', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+      });
+      const movie = await response.json();
+      console.log("movie:", movie);
+      // const rating = movie.rating;
+      // console.log("rating:", rating);
+      // return rating;
+      document.getElementById("title").textContent = "Title: " + movie.title;
+      for(let i = 0; i < movie.genres.length; i++) {
+        if(i == 0) {
+          document.getElementById("genre").textContent = "Genre: " + movie.genres[i];
+        }
+        else {
+          document.getElementById("genre").textContent += ", " + movie.genres[i];
+        }
+      }
+      document.getElementById("year").textContent = "Year Released: " + movie.year;
+      document.getElementById("director").textContent = "Director: " + movie.director;
+      if(movie.rating == undefined) {
+        document.getElementById("rating").textContent = "Rating: " + "Not Rated";
+      }
+      else {
+      document.getElementById("rating").textContent = "Rating: " + movie.rating;
+      }
+      document.getElementById("img1").innerHTML = "<img src='" + movie.posterUrl + "' alt='Movie Poster' width='200' height='300'>";
+      } catch {
+        console.log("error");
+    }
+  }
 
 function CreateMovieTable(movies, ELid) {
   const table = document.getElementById(ELid);
@@ -71,6 +95,7 @@ function CreateMovieTable(movies, ELid) {
   console.log("Table Created");
   console.log(table);
 }
+
 
 
 function CreateMovieTable2(movies, ELid) {
@@ -265,42 +290,42 @@ async function getMovies() {
 
 
 
-async function getFriends(user) {
+// async function getFriends(user) {
 
-  try {
-    const response = await fetch("/api/user/friends", {
-      method: "POST",
-      body: JSON.stringify({ name: user }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const friends = await response.json();
-    console.log(friends);
-    return friends;
-  } catch {
-    console.log("error");
-  }
-}
+//   try {
+//     const response = await fetch("/api/user/friends", {
+//       method: "POST",
+//       body: JSON.stringify({ name: user }),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const friends = await response.json();
+//     console.log(friends);
+//     return friends;
+//   } catch {
+//     console.log("error");
+//   }
+// }
 
 
-async function getFriendsMovies(user) {
+// async function getFriendsMovies(user) {
 
-  try {
-    const response = await fetch("/api/user/friends/movies", {
-      method: "POST",
-      body: JSON.stringify({ name: user }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const friendsMovies = await response.json();
-    console.log(friends);
-    return friendsMovies;
-  } catch {
-    console.log("error");
-  }
-}
+//   try {
+//     const response = await fetch("/api/user/friends/movies", {
+//       method: "POST",
+//       body: JSON.stringify({ name: user }),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const friendsMovies = await response.json();
+//     console.log(friends);
+//     return friendsMovies;
+//   } catch {
+//     console.log("error");
+//   }
+// }
 
 
 
@@ -345,6 +370,16 @@ async function getUserMovies(user) {
 }
 
 
+async function numMoviesRated() {
+  console.log("numMoviesRated called")
+  const userName = localStorage.getItem("userName");
+  const movies = await getUserMovies(userName);
+  const numMoviesRated = movies.length;
+  console.log("numMoviesRated:", numMoviesRated);
+  console.log(numMoviesRated);
+  return numMoviesRated;
+}
+  
 
 
 async function dropFunction(id) {
@@ -356,21 +391,21 @@ async function dropFunction(id) {
     who = userName;
     console.log("My Ratings")
   }
-  else if (id == 'frate') {
-    document.getElementById("text").innerHTML = "Friend Ratings";
-    who = "friends";
-  }
+  // else if (id == 'frate') {
+  //   document.getElementById("text").innerHTML = "Friend Ratings";
+  //   who = "friends";
+  // }
   else if (id == 'arate') {
     document.getElementById("text").innerHTML = "All User Ratings";
     who = "all";
   }
   document.getElementById("ratings").style.display = "block";
-  if (who == "friends") {
-    console.log("friendsTable")
-    movies = await getFriendsMovies(who);
-    console.log(movies);
-  }
-  else if (who == userName) {
+  // if (who == "friends") {
+  //   console.log("friendsTable")
+  //   movies = await getFriendsMovies(who);
+  //   console.log(movies);
+  // }
+  if (who == userName) {
     console.log(who + "Table");
     movies = await getUserMovies(who);
     console.log(movies);
@@ -417,7 +452,57 @@ async function MovieSearch() {
 }
 
 
+// async function friendSearch() {
+//   document.getElementById("stable1").style.display = "block";
+//   searchEl = document.getElementById("searchInput");
+//   var searchName = searchEl.value;
 
+//   try {
+//     const response = await fetch("/api/user/friends/search", {
+//       method: "POST",
+//       body: JSON.stringify({ name: searchName }),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
+//     const friends = await response.json();
+//     console.log(friends);
+//     return friends;
+//   }
+//   catch {
+//     console.log("error");
+//   }
+// }
+
+
+// async function createFriendsTable() {
+//   // Retrieve the User object from local storage
+//   const user = localStorage.getItem("userName");
+
+//   // Get the table element by its ID
+//   const table = document.getElementById("friendsTable");
+
+//   // Clear the table body before adding new rows
+//   table.innerHTML = "";
+
+//   // Create table header row
+//   const headerRow = table.insertRow();
+//   const usernameHeader = headerRow.insertCell();
+//   const moviesRatedHeader = headerRow.insertCell();
+//   usernameHeader.textContent = "Username";
+//   moviesRatedHeader.textContent = "Movies Rated";
+
+//   // Create table rows for each friend
+//   const friends = await getFriends(user);
+//   for (let i = 0; i < friends.length; i++) {
+//     const row = table.insertRow();
+//     const usernameCell = row.insertCell();
+//     const moviesRatedCell = row.insertCell();
+//     usernameCell.textContent = friends[i];
+//     const movies = await getUserMovies(friends[i]);
+//     moviesRatedCell.textContent = movies.length;
+//   }
+// }
 
 
   function getPassword() {
@@ -428,7 +513,6 @@ async function MovieSearch() {
     const user = new User(nameEl.value, passwordEl.value);
     window.localStorage.setItem("user", JSON.stringify(user))
   }
-
 
 
 

@@ -89,17 +89,30 @@ apiRouter.post('/user/movie', async (req, res) => {
     res.json(result);
 });
 
-apiRouter.post('/user/friends', async (req, res) => {
-    const name = req.body.name;
-    const result = await DB.getFriends(name);
-    res.json(result);
+apiRouter.post('/movies/random', async (_req, res) => {
+    console.log("API ROUTER MOVIES RANDOM")
+    const movie = await DB.randMovie();
+    console.log(movie);
+    res.json(movie);
 });
 
-apiRouter.post('/user/friends/movies', async (req, res) => {
-    const name = req.body.name;
-    const result = await DB.getFriendsMovies(name);
-    res.json(result);
-});
+// apiRouter.post('/user/friends', async (req, res) => {
+//     const name = req.body.name;
+//     const result = await DB.getFriends(name);
+//     res.json(result);
+// });
+
+// apiRouter.post('/user/friends/search', async (req, res) => {
+//     const name = req.body.name;
+//     const result = await DB.seachFriends(name);
+//     res.json(result);
+// });
+
+// apiRouter.post('/user/friends/movies', async (req, res) => {
+//     const name = req.body.name;
+//     const result = await DB.getFriendsMovies(name);
+//     res.json(result);
+// });
 
 apiRouter.post('/movie', async (req, res) => {
     const id = req.body.movieId;

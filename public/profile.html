@@ -53,11 +53,11 @@
             <p label="Movies Rated" id="mRated"></p>
             </div>
         </div>
-        <div class="Friends">
+        <!-- <div class="Friends">
           <div>
           <h2 style="padding-bottom: 1rem">My Friends</h2>
             <input id="searchInput" placeholder="Search to add a friend" />
-            <button onclick="myFunction1()" type="Search" class="btn btn-danger">Search</button>
+            <button onclick="friendSearch()" type="Search" class="btn btn-danger">Search</button>
             </div>
             <div class="friendsearch">
             <table id="stable1" style="text-align: center; display: none;">
@@ -85,7 +85,7 @@
                 </tbody>
             </table>
           </div>
-        </div>
+        </div> -->
     </main>
     <footer>
       <span class="text-reset">Jordan Brockbank</span>
@@ -93,24 +93,34 @@
       <a id="github" href="https://github.com/jbrockbank/startup">GitHub</a>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    var storedUsername = localStorage.getItem('userName');
-    var user = JSON.parse(window.localStorage.getItem("user"));
-    document.getElementById('mRated').textContent = user.moviesRated;
-    if (storedUsername) {
-    document.getElementById('name').textContent = storedUsername;
-    document.getElementById('nameBar').textContent = storedUsername;
-    } else {
-      document.getElementById('name').textContent = "Username";
-      document.getElementsByClass('nameBar').textContent = "Username";
-    }
-  });
+  //       document.addEventListener('DOMContentLoaded', function() {
+  //   var storedUsername = localStorage.getItem('userName');
+  //   var user = JSON.parse(window.localStorage.getItem("user"));
+  //   document.getElementById('mRated').textContent = user.moviesRated;
+  //   if (storedUsername) {
+  //   document.getElementById('name').textContent = storedUsername;
+  //   document.getElementById('nameBar').textContent = storedUsername;
+  //   } else {
+  //     document.getElementById('name').textContent = "Username";
+  //     document.getElementsByClass('nameBar').textContent = "Username";
+  //   }
+  // });
+  document.addEventListener('DOMContentLoaded', function() {
+      var storedUsername = localStorage.getItem('userName');
+      if (storedUsername) {
+      document.getElementById('nameBar').textContent = storedUsername;
+      document.getElementById('name').textContent = storedUsername;
+      } else {
+        document.getElementsByClass('nameBar').textContent = "Username";
+        document.getElementById('name').textContent = "Username";
+      }
+    });
     </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="profile.js"></script>
     <script src="main.js"></script>
+    <script src="profile.js"></script>
   </body>
 </html>
 
