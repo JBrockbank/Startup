@@ -88,3 +88,9 @@ For this deliverable I added the following:
 - I created an HTTP Service using Node.js and Express
 - FrontEnd is served up using express middleware
 - I created a GET and POST endpoints that allow users to submit ratings and then that rating gets displayed on the website as the newest rating given to a movie and I call those endpoints.
+\
+\
+**Database**
+\
+- I created a Mongo Database Cluster
+- I have backend endpoints to access and manipulate the database(Adding ratings, viewing individual ratings, viewing general site ratings as an average of all individual ratings)
