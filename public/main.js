@@ -504,15 +504,49 @@ async function MovieSearch() {
 //   }
 // }
 
-
-  function getPassword() {
-    return localStorage.getItem("password");
+async function getMovieById(id) {
+  console.log("getMovieById called")
+  try {
+    const response = await fetch("/api/movie/find", {
+      method: "POST",
+      body: JSON.stringify({ id: id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const movie = await response.json();
+    console.log(movie);
+    return movie;
+  } catch {
+    console.log("error");
   }
+}
+  
 
-  function createUser(nameEl, passwordEl) {
+
+
+async function updateNewestRating() {
+  console.log("updateNewestRating called")
+  const newrating = await newestRating();
+  console.log("newrating:", newrating);
+  const id = newrating.movieId;
+  console.log("id:", id);
+  const movie = await getMovieById(id);
+  const title = movie.title;
+  if (newrating) {
+    document.getElementById("newestRating").textContent = `${title} gave ${newrating.movieId} a rating of ${newrating.rating}`;
+  }
+}
+
+
+function getPassword() {
+    return localStorage.getItem("password");
+}
+
+function createUser(nameEl, passwordEl) {
     const user = new User(nameEl.value, passwordEl.value);
     window.localStorage.setItem("user", JSON.stringify(user))
-  }
+}
 
 
 

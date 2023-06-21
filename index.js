@@ -114,8 +114,9 @@ apiRouter.post('/movies/random', async (_req, res) => {
 //     res.json(result);
 // });
 
-apiRouter.post('/movie', async (req, res) => {
-    const id = req.body.movieId;
+apiRouter.post('/movie/find', async (req, res) => {
+    console.log("API ROUTER MOVIE")
+    const id = req.body.id;
     const result = await DB.movieQueryByID(id);
     res.json(result);
 });

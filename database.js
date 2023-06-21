@@ -57,12 +57,9 @@ async function movieQueryByTitle(title) {
 }
 
 async function movieQueryByID(id) {
+    console.log("movieQueryByID called");
     const query = {id: id};
-    const options = {
-        sort: { score: -1 },
-        limit: 10,
-        };
-    let movie = await collection.findOne(query, options);
+    let movie = await collection.findOne(query);
     return movie;
 }
 

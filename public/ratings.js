@@ -90,13 +90,7 @@
       }
     }
 
-    async function updateNewestRating() {
-      const newrating = await newestRating();
-      console.log("newrating:", newrating);
-      if (newrating) {
-        document.getElementById("newestRating").textContent = `User ${newrating.UserName} gave ${newrating.movieId} a rating of ${newrating.rating}`;
-      }
-    };
+
     
     
 
