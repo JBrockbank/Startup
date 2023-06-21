@@ -58,6 +58,8 @@ async function movieQueryByID(id) {
     console.log("movieQueryByID called");
     const query = {id: id};
     let movie = await collection.findOne(query);
+    console.log("Movie: ");
+    console.log(movie);
     return movie;
 }
 

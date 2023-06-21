@@ -349,14 +349,17 @@ async function getUserMovies(user) {
     console.log(movieIDList);
     let movieList = [];
     for (let i = 0; i < movieIDList.length; i++) {
-      const response = await fetch("/api/movie", {
+      const response = await fetch("/api/movie/find", {
         method: "POST",
         body: JSON.stringify({ movieId: movieIDList[i] }),
         headers: {
           "Content-Type": "application/json",
         },
       });
+      console.log("response")
+      console.log(response)
       const movie = await response.json();
+      console.log(movie);
       movieList.push(movie);
     }
     console.log(movieList);
