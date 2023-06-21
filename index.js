@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const DB = require('./database.js');
+const bcrypt = require('bcrypt');
 
 // The service port. In production, the frontend code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -45,15 +46,25 @@ apiRouter.post('/movieRating', async (req, res) => {
 apiRouter.post('/user/register', async (req, res) => {
     const name = req.body.name;
     const password = req.body.password;
-    const result = await DB.AddUser(name, password);
+    const passHash = await bcrypt.hash(password, 10);
+    const result = await DB.AddUser(name, passHash);
     res.json(result);
 });
 
 apiRouter.post('/user/login', async (req, res) => {
     const name = req.body.name;
     const password = req.body.password;
-    const result = await DB.Login(name, password);
-    res.json(result);
+    let result = false;
+    const user = await DB.getUserByName(name);
+    const passHash = user.password;
+    if (await bcrypt.compare(password, passHash)) {
+        console.log("Passwords match");
+        result = true;
+        res.json(result);
+    } else {
+        console.log("Passwords do not match");
+        res.json(result);
+    }
 });
 
 apiRouter.get('/movies', async (_req, res) => {

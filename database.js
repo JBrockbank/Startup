@@ -145,6 +145,12 @@ async function Login(name, password) {
 }
 
 
+async function getUserByName(name) {
+    const query = {name: name};
+    const user = await UserCollection.findOne(query);
+    return user;
+}
+
 async function getMovies() {
     const cursor = collection.find({}).sort({rating: -1});
     const movies = await cursor.toArray();
@@ -213,4 +219,4 @@ async function randMovie() {
 
 
 
-module.exports = { movieQueryByTitle, movieQueryByID, rateUserMovie, AddUser, randMovie, Login, getMovies, getUserMovies, findMovieID };
+module.exports = { movieQueryByTitle, movieQueryByID, rateUserMovie, AddUser, randMovie, Login, getMovies, getUserMovies, findMovieID, getUserByName };
