@@ -24,7 +24,6 @@ const UserMovieCollection3 = db.collection('UserMovies');
     constructor(name, password) {
       this.name = name;
       this.password = password;
-      this.friends = [];
       this.Id;
     }
   }
