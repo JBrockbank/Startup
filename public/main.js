@@ -512,7 +512,7 @@ async function getMovieById(id) {
   try {
     const response = await fetch("/api/movie/find", {
       method: "POST",
-      body: JSON.stringify({ id: id }),
+      body: JSON.stringify({ movieId: id }),
       headers: {
         "Content-Type": "application/json",
       },
