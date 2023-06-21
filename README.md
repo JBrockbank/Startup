@@ -94,3 +94,11 @@ For this deliverable I added the following:
 \
 - I created a Mongo Database Cluster
 - I have backend endpoints to access and manipulate the database(Adding ratings, viewing individual ratings, viewing general site ratings as an average of all individual ratings)
+\
+\
+**Authentication**
+\
+- When users register it gets pushed to the database
+- User passwords are Hashed and not in plain text
+- They are authenticated on login that password and user match what is in the database
+- If no authentication then they cannot login
