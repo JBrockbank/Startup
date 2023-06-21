@@ -25,7 +25,6 @@ const UserMovieCollection3 = db.collection('UserMovies');
       this.name = name;
       this.password = password;
       this.friends = [];
-      this.moviesRated = 0;
       this.Id;
     }
   }
